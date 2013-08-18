@@ -33,6 +33,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="StringCalculatorKata\" />
+    <Folder Include="StringCalculatorKataTests\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
@@ -42,7 +43,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StringCalculatorKata\StringCalculatorTests.cs" />
     <Compile Include="StringCalculatorKata\StringCalculator.cs" />
+    <Compile Include="StringCalculatorKataTests\StringCalculatorTests.cs" />
   </ItemGroup>
 </Project>

@@ -1,63 +1,106 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sandbox.StringCalculatorKata
 {
 	public class StringCalculator
 	{
-		private readonly int ResultIfEmptyInput = 0;
-		private List<string> Delimiters = new List<string>{",", "\n"};
+		private const int ResultIfInputEmpty = 0;
+		private const int MaximumLegalInput = 1000;
+		private const string newLineSymbol = "\n";
+		private const string CustomDelimiterStart = "[";
+		private const string CustomDelimiterEnd = "]";
+		private const string CustomDelimiterIndicator = "//";
+		private static readonly List<string> Delimiters = new List<string>{",", newLineSymbol};
 
 		public int Add (string numbers)
 		{
 			if (string.IsNullOrEmpty (numbers)) {
-				return ResultIfEmptyInput;
+				return ResultIfInputEmpty;
 			}
 
-			if (CustomDelimiterUsed(numbers)) {
-				AddCustomDelimiter(numbers);
-				numbers = ExtractSecondLineFrom(numbers);
+			return CustomDelimiterUsed(numbers) 
+				? ParseWithCustomDelimiters(numbers).Sum()
+				: Parse(numbers).Sum();
+		}
+
+		private int[] ParseWithCustomDelimiters (string numbers)
+		{
+			ExtractCustomDelimitersFrom (FirstLineOf (numbers));
+			return Parse (SecondLineOnwardsOf (numbers));
+		}
+
+		private void ExtractCustomDelimitersFrom (string numbers)
+		{
+			if (LongDelimiterUsed (numbers)) {
+				ExtractLongCustomDelimiters (numbers);
+			} else {
+				AddSingleCharacterCustomDelimiter (numbers);
 			}
-
-			int[] integers = Parse(numbers);
-			ThrowExceptionIfAnyIntegersNegative(integers);
-			return integers.Sum();
 		}
 
-		private static string ExtractSecondLineFrom (string numbers)
+	    private int[] Parse (string numbers)
 		{
-			return numbers.Substring (4);
+			int[] integers = numbers.Split(Delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries)
+						            .Select(n => Convert.ToInt32(n))
+									.Where(n => n <= MaximumLegalInput)
+						            .ToArray();
+			ThrowExceptionIfAnyNegative(integers);
+			return integers;
 		}
 
-		private void AddCustomDelimiter (string numbers)
+		private void ExtractLongCustomDelimiters (string numbers)
 		{
-			Delimiters.Add (numbers.Substring (2, 1));
-		}
-
-		private int[] Parse (string numbers)
-		{
-			return numbers.Split(Delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries)
-						  .Select(n => Convert.ToInt32(n))
-						  .ToArray();
-		}
-
-		private void ThrowExceptionIfAnyIntegersNegative (int[] integers)
-		{
-			if (integers.Any (x => x < 0)) {
-				int[] negatives = integers.Where(x => x < 0).ToArray();
-				throw new Exception(String.Format("negatives not allowed - {0}", FormatNumbers(negatives)));
+			string[] delimiters = numbers.Remove (0, 2)
+				       					 .Split (CustomDelimiterEnd.ToArray (), StringSplitOptions.RemoveEmptyEntries);
+			foreach (string delimiter in delimiters) {
+				Delimiters.Add(delimiter.Remove (0, 1));
 			}
+		}
+
+		private void ThrowExceptionIfAnyNegative (int[] integers)
+		{
+			if (!integers.Any (x => x < 0)) return;
+
+			int[] negatives = integers.Where(x => x < 0).ToArray();
+			throw new Exception(String.Format(
+				"negatives not allowed - {0}", FormatNumbers(negatives)));
 		}
 
 		private string FormatNumbers (int[] negatives)
 		{
-			return string.Join(" ", negatives);
+			return string.Join (" ", negatives);
 		}
 
-		static bool CustomDelimiterUsed (string numbers)
+		private void AddSingleCharacterCustomDelimiter (string numbers)
 		{
-			return numbers.StartsWith("//");
+			Delimiters.Add (numbers.Substring (2, 1));
+		}
+
+		private static bool CustomDelimiterUsed (string numbers)
+		{
+			return numbers.StartsWith (CustomDelimiterIndicator);
+		}
+
+		private static bool LongDelimiterUsed (string numbers)
+		{
+			return numbers.Contains (CustomDelimiterStart);
+		}
+
+		private static string FirstLineOf (string numbers)
+		{
+			return numbers.Substring(0, GetSecondLineIndex (numbers));
+		}
+
+		private static string SecondLineOnwardsOf (string numbers)
+		{
+			return numbers.Substring (GetSecondLineIndex (numbers)+1);
+		}
+
+		static int GetSecondLineIndex (string numbers)
+		{
+			return numbers.IndexOf (newLineSymbol);
 		}
 	}
 }

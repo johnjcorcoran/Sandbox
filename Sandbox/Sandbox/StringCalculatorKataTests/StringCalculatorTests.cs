@@ -1,8 +1,9 @@
 using System;
 using NUnit.Framework;
+using Sandbox.StringCalculatorKata;
 
 
-namespace Sandbox.StringCalculatorKata
+namespace Sandbox.StringCalculatorKataTests
 {
 	[TestFixture]
 	public class StringCalculatorTests
@@ -16,14 +17,14 @@ namespace Sandbox.StringCalculatorKata
 		}
 
 		[Test]
-		public void AddEmptyStringEqualsZero()
+		public void AddWithEmptyStringReturnsZero()
 		{
 			Assert.That(_calculator.Add(""), Is.EqualTo(0));
 		}
 
 		[TestCase("1", 1)]
 		[TestCase("2", 2)]
-		public void AddSingleNumberReturnsThatNumber (string numbers, int result)
+		public void AddingSingleNumberReturnsThatNumber (string numbers, int result)
 		{
 			Assert.That(_calculator.Add(numbers), Is.EqualTo(result));
 		}
@@ -31,14 +32,14 @@ namespace Sandbox.StringCalculatorKata
 		[TestCase("1,2", 3)]
 		[TestCase("2,3", 5)]
 		[TestCase("1,2,3,4,5", 15)]
-		public void AddMultipleDelimitedNumbersReturnsSumOfNumbers(string numbers, int result)
+		public void AddingMultipleDelimitedNumbersReturnsSumOfNumbers(string numbers, int result)
 		{
 			Assert.That(_calculator.Add(numbers), Is.EqualTo(result));
 		}
 
 		[TestCase("1\n2", 3)]
 		[TestCase("1\n2,3", 6)]
-		public void AddMultipleNewLineDelimitedNumbersReturnsSumOfNumbers(string numbers, int result)
+		public void AddingMultipleNewLineDelimitedNumbersReturnsSumOfNumbers(string numbers, int result)
 		{
 			Assert.That(_calculator.Add(numbers), Is.EqualTo(result));
 		}
