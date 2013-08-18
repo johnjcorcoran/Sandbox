@@ -53,7 +53,7 @@ namespace Sandbox.StringCalculatorKata
         private void ExtractLongCustomDelimiters (string numbers)
         {
             string[] delimiters = numbers.Remove (0, 2)
-                                            .Split (CustomDelimiterEnd.ToArray (), StringSplitOptions.RemoveEmptyEntries);
+                                         .Split (CustomDelimiterEnd.ToArray (), StringSplitOptions.RemoveEmptyEntries);
             foreach (string delimiter in delimiters) {
                 Delimiters.Add (delimiter.Remove (0, 1));
             }
