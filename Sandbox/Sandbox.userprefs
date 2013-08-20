@@ -1,14 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Sandbox/StringCalculatorKata/StringCalculatorTests.cs">
-    <Files>
-      <File FileName="Sandbox/StringCalculatorKata/StringCalculatorTests.cs" Line="25" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Sandbox" expanded="True" selected="True">
-            <Node name="References" expanded="True" />
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="Katas" expanded="True" selected="True">
+            <Node name="BowlingGameKata" expanded="True" />
             <Node name="StringCalculatorKata" expanded="True" />
           </Node>
         </State>

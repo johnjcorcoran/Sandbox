@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{96DE040A-5274-46C1-853D-EF1A0C34F37F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas", "Sandbox\Katas.csproj", "{96DE040A-5274-46C1-853D-EF1A0C34F37F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,6 @@ Global
 		{96DE040A-5274-46C1-853D-EF1A0C34F37F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Sandbox\Sandbox.csproj
+		StartupItem = Sandbox\Katas.csproj
 	EndGlobalSection
 EndGlobal
