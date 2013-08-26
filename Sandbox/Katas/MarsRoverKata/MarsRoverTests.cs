@@ -44,7 +44,7 @@ namespace Katas.MarsRover
         }
 
         [TestCase(0, 5, "b", 4)]
-        [TestCase(0, 5, "bb", 3)]
+        [TestCase(1, 5, "bb", 3)]
         public void RoverMovesSouthWhenMovedBackwardWhileFacingNorth(
             int startPointX, int startPointY, string movement, int finalPointY)
         {
@@ -54,15 +54,27 @@ namespace Katas.MarsRover
         }
 
         [TestCase(0, 5, "fb", 5)]
-        [TestCase(0, 5, "bf", 5)]
-        [TestCase(0, 5, "ffb", 6)]
-        [TestCase(0, 5, "bbf", 4)]
-        public void RoverCanMoveForwardsAndBackwardsInOneMovementWhileFacingNorth(
+        [TestCase(1, 5, "bf", 5)]
+        [TestCase(2, 5, "ffb", 6)]
+        [TestCase(3, 5, "bbf", 4)]
+        public void RoverCanMoveForwardsAndBackwardsWhileFacingNorth(
             int startPointX, int startPointY, string movement, int finalPointY)
         {
             InitialiseRoverAt(startPointX, startPointY, Direction.North);
             MoveRover(movement);
             Assert.That(_rover, IsAt.Position(startPointX, finalPointY, Direction.North));
+        }
+
+        [TestCase(0, 5, "f", 4)]
+        [TestCase(0, 5, "b", 6)]
+        [TestCase(0, 5, "ffb", 4)]
+        [TestCase(0, 5, "bbf", 6)]
+        public void RoverCanMoveForwardsAndBackwardsWhileFacingSouth(
+            int startPointX, int startPointY, string movement, int finalPointY)
+        {
+            InitialiseRoverAt(startPointX, startPointY, Direction.South);
+            MoveRover(movement);
+            Assert.That(_rover, IsAt.Position(startPointX, finalPointY, Direction.South));
         }
 
         private void InitialiseRoverAt(int x, int y, Direction direction)

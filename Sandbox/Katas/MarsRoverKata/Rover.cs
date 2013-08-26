@@ -32,12 +32,38 @@ namespace Katas.MarsRover
 
         private void MoveForwards()
         {
-            Point = new GridPoint(Point.X, Point.Y + 1);
+            switch (Direction)
+            {
+                case (Direction.North):
+                    MoveNorth();
+                    break;
+                case (Direction.South):
+                    MoveSouth();
+                    break;
+            }
         }
 
         private void MoveBackwards()
         {
-            Point = new GridPoint(Point.X, Point.Y - 1);
+            switch (Direction)
+            {
+                case (Direction.North):
+                    MoveSouth();
+                    break;
+                case (Direction.South):
+                    MoveNorth();
+                    break;
+            }
+        }
+
+        private void MoveNorth()
+        {
+            Point.MoveNorth();
+        }
+
+        private void MoveSouth()
+        {
+            Point.MoveSouth();
         }
 
         public override string ToString()

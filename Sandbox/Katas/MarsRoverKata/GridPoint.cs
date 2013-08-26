@@ -12,6 +12,16 @@ namespace Katas.MarsRover
             X = x;
             Y = y;
         }
+
+        public void MoveNorth()
+        {
+            Y++;
+        }
+
+        public void MoveSouth()
+        {
+            Y--;
+        }
     }
 }
 
