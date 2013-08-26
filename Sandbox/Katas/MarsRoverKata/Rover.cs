@@ -21,10 +21,16 @@ namespace Katas.MarsRover
                 switch (move)
                 {
                     case 'f':
-                        Point.MoveForwardFacing(Direction);
+                        Point.MoveForwardFacing(Direction.CompassPoint);
                         break;
                     case 'b':
-                        Point.MoveBackwardFacing(Direction);
+                        Point.MoveBackwardFacing(Direction.CompassPoint);
+                        break;
+                    case 'r':
+                        Direction.TurnRight();
+                        break;
+                    case 'l':
+                        Direction.TurnLeft();
                         break;
                 }
             }

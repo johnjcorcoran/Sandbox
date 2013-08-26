@@ -13,39 +13,39 @@ namespace Katas.MarsRover
             Y = y;
         }
 
-        public void MoveForwardFacing(Direction direction)
+        public void MoveForwardFacing(CompassPoint direction)
         {
             switch (direction)
             {
-                case (Direction.North):
+                case (CompassPoint.North):
                     MoveNorth();
                     break;
-                case (Direction.East):
+                case (CompassPoint.East):
                     MoveEast();
                     break;
-                case (Direction.South):
+                case (CompassPoint.South):
                     MoveSouth();
                     break;
-                case (Direction.West):
+                case (CompassPoint.West):
                     MoveWest();
                     break;
             }
         }
 
-        public void MoveBackwardFacing(Direction direction)
+        public void MoveBackwardFacing(CompassPoint direction)
         {
             switch (direction)
             {
-                case (Direction.North):
+                case (CompassPoint.North):
                     MoveSouth();
                     break;
-                case (Direction.East):
+                case (CompassPoint.East):
                     MoveWest();
                     break;
-                case (Direction.South):
+                case (CompassPoint.South):
                     MoveNorth();
                     break;
-                case (Direction.West):
+                case (CompassPoint.West):
                     MoveEast();
                     break;
             }
