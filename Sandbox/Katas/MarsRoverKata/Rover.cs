@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace Katas.MarsRover
 {
@@ -16,12 +17,24 @@ namespace Katas.MarsRover
         public void Move(char[] movement)
         {
             int movementAmount = movement.Length;
-            Point = new GridPoint(Point.X, MoveY(movementAmount));
+            if (movement.Contains('b'))
+            {
+                Point = new GridPoint(Point.X, MoveBackwards(movementAmount));
+            }
+            else
+            {
+                Point = new GridPoint(Point.X, MoveForwards(movementAmount));
+            }
         }
 
-        private int MoveY(int amount)
+        private int MoveForwards(int amount)
         {
             return Point.Y + amount;
+        }
+
+        private int MoveBackwards(int amount)
+        {
+            return Point.Y - amount;
         }
 
         public override string ToString()
@@ -30,4 +43,3 @@ namespace Katas.MarsRover
         }
     }
 }
-
