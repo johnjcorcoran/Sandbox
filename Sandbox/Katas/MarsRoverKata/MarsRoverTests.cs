@@ -33,9 +33,9 @@ namespace Katas.MarsRover
 
         [TestCase(0, 0, "f", 1)]
         [TestCase(0, 0, "ff", 2)]
-        [TestCase(1, 1, "f", 3)]
-        [TestCase(1, 1, "ff", 4)]
-        public void RoverMovesNorthWhenMovedForwardFromDefaultStartingPoint(
+        [TestCase(1, 1, "f", 2)]
+        [TestCase(1, 1, "ff", 3)]
+        public void RoverMovesNorthWhenMovedForwardWhileFacingNorth(
             int startPointX, int startPointY, string movement, int finalPointY)
         {
             InitialiseRoverAt(startPointX, startPointY, Direction.North);
