@@ -43,8 +43,14 @@
     <Compile Include="StringCalculatorKata\StringCalculatorTests.cs" />
     <Compile Include="BowlingGameKata\BowlingGame.cs" />
     <Compile Include="BowlingGameKata\BowlingGameTests.cs" />
+    <Compile Include="FizzBuzz.cs" />
+    <Compile Include="MarsRoverKata\MarsRoverTests.cs" />
+    <Compile Include="MarsRoverKata\Rover.cs" />
+    <Compile Include="MarsRoverKata\Point.cs" />
+    <Compile Include="MarsRoverKata\Direction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BowlingGameKata\" />
+    <Folder Include="MarsRoverKata\" />
   </ItemGroup>
 </Project>

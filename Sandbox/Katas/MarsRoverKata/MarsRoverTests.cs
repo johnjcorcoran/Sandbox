@@ -20,14 +20,41 @@ namespace Katas.MarsRover
     public class MarsRoverTests
     {
         private Rover _rover;
+        private const Direction defaultDirection = Direction.North;
+        private Point defaultPoint = new Point(0, 0);
 
-        [TestCase(0, 0, Direction.North)]
+        [TestCase(0, 0, defaultDirection)]
         [TestCase(1, 2, Direction.East)]
         public void RoverRemainsAtStartingPointAndInitialDirectionWhenNotIssuedMoveCommands(
             int x, int y, Direction startingPoint)
         {
-            _rover = new Rover(new Point(x, y), startingPoint);
+            InitialiseRoverAt(x, y, startingPoint);
             Assert.That(_rover, IsAt.Position(x, y, startingPoint));
+        }
+
+        [TestCase("f", 1)]
+        [TestCase("ff", 2)]
+        [TestCase("fff", 3)]
+        public void RoverMovesNorthWhenMovedForwardFromDefaultStartingPoint(string movement, int finalY)
+        {
+            InitialiseDefaultRover();
+            MoveRover(movement);
+            Assert.That(_rover, IsAt.Position(0, finalY, defaultDirection));
+        }
+
+        private void InitialiseDefaultRover()
+        {
+            _rover = new Rover(defaultPoint, defaultDirection);
+        }
+
+        private void InitialiseRoverAt(int x, int y, Direction direction = defaultDirection)
+        {
+            _rover = new Rover(new Point(x, y), direction);
+        }
+
+        private void MoveRover(string movement)
+        {
+            _rover.Move(movement.ToCharArray());
         }
     }
 

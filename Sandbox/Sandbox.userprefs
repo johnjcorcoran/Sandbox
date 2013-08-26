@@ -5,11 +5,20 @@
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
-          <Node name="Katas" expanded="True" selected="True">
-            <Node name="BowlingGameKata" expanded="True" />
+          <Node name="Katas" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="BowlingGameKata" expanded="True">
+              <Node name="BowlingGame.cs" selected="True" />
+            </Node>
             <Node name="StringCalculatorKata" expanded="True" />
           </Node>
         </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
