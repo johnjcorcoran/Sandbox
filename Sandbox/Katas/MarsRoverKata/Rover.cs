@@ -16,25 +16,28 @@ namespace Katas.MarsRover
 
         public void Move(char[] movement)
         {
-            int movementAmount = movement.Length;
-            if (movement.Contains('b'))
+            foreach (char move in movement)
             {
-                Point = new GridPoint(Point.X, MoveBackwards(movementAmount));
-            }
-            else
-            {
-                Point = new GridPoint(Point.X, MoveForwards(movementAmount));
+                switch (move)
+                {
+                    case 'f':
+                        MoveForwards();
+                        break;
+                    case 'b':
+                        MoveBackwards();
+                        break;
+                }
             }
         }
 
-        private int MoveForwards(int amount)
+        private void MoveForwards()
         {
-            return Point.Y + amount;
+            Point = new GridPoint(Point.X, Point.Y + 1);
         }
 
-        private int MoveBackwards(int amount)
+        private void MoveBackwards()
         {
-            return Point.Y - amount;
+            Point = new GridPoint(Point.X, Point.Y - 1);
         }
 
         public override string ToString()

@@ -53,6 +53,18 @@ namespace Katas.MarsRover
             Assert.That(_rover, IsAt.Position(startPointX, finalPointY, Direction.North));
         }
 
+        [TestCase(0, 5, "fb", 5)]
+        [TestCase(0, 5, "bf", 5)]
+        [TestCase(0, 5, "ffb", 6)]
+        [TestCase(0, 5, "bbf", 4)]
+        public void RoverCanMoveForwardsAndBackwardsInOneMovementWhileFacingNorth(
+            int startPointX, int startPointY, string movement, int finalPointY)
+        {
+            InitialiseRoverAt(startPointX, startPointY, Direction.North);
+            MoveRover(movement);
+            Assert.That(_rover, IsAt.Position(startPointX, finalPointY, Direction.North));
+        }
+
         private void InitialiseRoverAt(int x, int y, Direction direction)
         {
             _rover = new Rover(new GridPoint(x, y), direction);
