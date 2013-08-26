@@ -4,10 +4,10 @@ namespace Katas.MarsRover
 {
     public class Rover
     {
-        public Point Point { get; private set;}
+        public GridPoint Point { get; private set;}
         public Direction Direction { get; private set;}
 
-        public Rover(Point startingPoint, Direction startingDirection)
+        public Rover(GridPoint startingPoint, Direction startingDirection)
         {
             Point = startingPoint;
             Direction = startingDirection;
@@ -16,7 +16,12 @@ namespace Katas.MarsRover
         public void Move(char[] movement)
         {
             int movementAmount = movement.Length;
-            Point = new Point(0, movementAmount);
+            Point = new GridPoint(Point.X, MoveY(movementAmount));
+        }
+
+        private int MoveY(int amount)
+        {
+            return Point.Y + amount;
         }
 
         public override string ToString()

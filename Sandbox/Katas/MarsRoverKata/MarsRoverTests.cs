@@ -20,36 +20,32 @@ namespace Katas.MarsRover
     public class MarsRoverTests
     {
         private Rover _rover;
-        private const Direction defaultDirection = Direction.North;
-        private Point defaultPoint = new Point(0, 0);
 
-        [TestCase(0, 0, defaultDirection)]
+        [TestCase(0, 0, Direction.North)]
         [TestCase(1, 2, Direction.East)]
+        [TestCase(2, 1, Direction.South)]
         public void RoverRemainsAtStartingPointAndInitialDirectionWhenNotIssuedMoveCommands(
-            int x, int y, Direction startingPoint)
+            int x, int y, Direction startingDirection)
         {
-            InitialiseRoverAt(x, y, startingPoint);
-            Assert.That(_rover, IsAt.Position(x, y, startingPoint));
+            InitialiseRoverAt(x, y, startingDirection);
+            Assert.That(_rover, IsAt.Position(x, y, startingDirection));
         }
 
-        [TestCase("f", 1)]
-        [TestCase("ff", 2)]
-        [TestCase("fff", 3)]
-        public void RoverMovesNorthWhenMovedForwardFromDefaultStartingPoint(string movement, int finalY)
+        [TestCase(0, 0, "f", 1)]
+        [TestCase(0, 0, "ff", 2)]
+        [TestCase(1, 1, "f", 3)]
+        [TestCase(1, 1, "ff", 4)]
+        public void RoverMovesNorthWhenMovedForwardFromDefaultStartingPoint(
+            int startPointX, int startPointY, string movement, int finalPointY)
         {
-            InitialiseDefaultRover();
+            InitialiseRoverAt(startPointX, startPointY, Direction.North);
             MoveRover(movement);
-            Assert.That(_rover, IsAt.Position(0, finalY, defaultDirection));
+            Assert.That(_rover, IsAt.Position(startPointX, finalPointY, Direction.North));
         }
 
-        private void InitialiseDefaultRover()
+        private void InitialiseRoverAt(int x, int y, Direction direction)
         {
-            _rover = new Rover(defaultPoint, defaultDirection);
-        }
-
-        private void InitialiseRoverAt(int x, int y, Direction direction = defaultDirection)
-        {
-            _rover = new Rover(new Point(x, y), direction);
+            _rover = new Rover(new GridPoint(x, y), direction);
         }
 
         private void MoveRover(string movement)
@@ -62,7 +58,7 @@ namespace Katas.MarsRover
     {
         public static RoverConstraint Position(int x, int y, Direction direction)
         {
-            return new RoverConstraint(new Rover(new Point (x, y), direction));
+            return new RoverConstraint(new Rover(new GridPoint (x, y), direction));
         }
     }
 

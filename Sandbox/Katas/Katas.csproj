@@ -46,8 +46,8 @@
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="MarsRoverKata\MarsRoverTests.cs" />
     <Compile Include="MarsRoverKata\Rover.cs" />
-    <Compile Include="MarsRoverKata\Point.cs" />
     <Compile Include="MarsRoverKata\Direction.cs" />
+    <Compile Include="MarsRoverKata\GridPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BowlingGameKata\" />
