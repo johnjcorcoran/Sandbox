@@ -21,50 +21,14 @@ namespace Katas.MarsRover
                 switch (move)
                 {
                     case 'f':
-                        MoveForwards();
+                        Point.MoveForwardFacing(Direction);
                         break;
                     case 'b':
-                        MoveBackwards();
+                        Point.MoveBackwardFacing(Direction);
                         break;
                 }
             }
-        }
-
-        private void MoveForwards()
-        {
-            switch (Direction)
-            {
-                case (Direction.North):
-                    MoveNorth();
-                    break;
-                case (Direction.South):
-                    MoveSouth();
-                    break;
-            }
-        }
-
-        private void MoveBackwards()
-        {
-            switch (Direction)
-            {
-                case (Direction.North):
-                    MoveSouth();
-                    break;
-                case (Direction.South):
-                    MoveNorth();
-                    break;
-            }
-        }
-
-        private void MoveNorth()
-        {
-            Point.MoveNorth();
-        }
-
-        private void MoveSouth()
-        {
-            Point.MoveSouth();
-        }
+        }  
 
         public override string ToString()
         {

@@ -57,7 +57,7 @@ namespace Katas.MarsRover
         [TestCase(1, 5, "bf", 5)]
         [TestCase(2, 5, "ffb", 6)]
         [TestCase(3, 5, "bbf", 4)]
-        public void RoverCanMoveForwardsAndBackwardsWhileFacingNorth(
+        public void RoverCanMoveForwardsAndBackwardsFacingNorth(
             int startPointX, int startPointY, string movement, int finalPointY)
         {
             InitialiseRoverAt(startPointX, startPointY, Direction.North);
@@ -69,12 +69,34 @@ namespace Katas.MarsRover
         [TestCase(0, 5, "b", 6)]
         [TestCase(0, 5, "ffb", 4)]
         [TestCase(0, 5, "bbf", 6)]
-        public void RoverCanMoveForwardsAndBackwardsWhileFacingSouth(
+        public void RoverCanMoveForwardsAndBackwardsFacingSouth(
             int startPointX, int startPointY, string movement, int finalPointY)
         {
             InitialiseRoverAt(startPointX, startPointY, Direction.South);
             MoveRover(movement);
             Assert.That(_rover, IsAt.Position(startPointX, finalPointY, Direction.South));
+        }
+
+        [TestCase(5, 5, "f", 6)]
+        [TestCase(5, 5, "b", 4)]
+        [TestCase(5, 5, "ffb", 6)]
+        [TestCase(5, 5, "bbf", 4)]
+        public void RoverCanMoveForwardsAndBackwardsFacingEast(
+            int startPointX, int startPointY, string movement, int finalPointX)
+        {
+            InitialiseRoverAt(startPointX, startPointY, Direction.East);
+            MoveRover(movement);
+            Assert.That(_rover, IsAt.Position(finalPointX, startPointY, Direction.East));
+        }
+
+        [TestCase(5, 5, "f", 4)]
+        [TestCase(5, 5, "b", 6)]
+        public void RoverCanMoveForwardsAndBackwardsFacingWest(
+            int startPointX, int startPointY, string movement, int finalPointX)
+        {
+            InitialiseRoverAt(startPointX, startPointY, Direction.West);
+            MoveRover(movement);
+            Assert.That(_rover, IsAt.Position(finalPointX, startPointY, Direction.West));
         }
 
         private void InitialiseRoverAt(int x, int y, Direction direction)

@@ -13,6 +13,44 @@ namespace Katas.MarsRover
             Y = y;
         }
 
+        public void MoveForwardFacing(Direction direction)
+        {
+            switch (direction)
+            {
+                case (Direction.North):
+                    MoveNorth();
+                    break;
+                case (Direction.East):
+                    MoveEast();
+                    break;
+                case (Direction.South):
+                    MoveSouth();
+                    break;
+                case (Direction.West):
+                    MoveWest();
+                    break;
+            }
+        }
+
+        public void MoveBackwardFacing(Direction direction)
+        {
+            switch (direction)
+            {
+                case (Direction.North):
+                    MoveSouth();
+                    break;
+                case (Direction.East):
+                    MoveWest();
+                    break;
+                case (Direction.South):
+                    MoveNorth();
+                    break;
+                case (Direction.West):
+                    MoveEast();
+                    break;
+            }
+        }
+
         public void MoveNorth()
         {
             Y++;
@@ -21,6 +59,16 @@ namespace Katas.MarsRover
         public void MoveSouth()
         {
             Y--;
+        }
+
+        public void MoveEast()
+        {
+            X++;
+        }
+
+        public void MoveWest()
+        {
+            X--;
         }
     }
 }
