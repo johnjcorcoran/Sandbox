@@ -1,0 +1,7 @@
+C:\code\sandbox\7sand\Sandbox\Sandbox\Katas\obj\x86\Debug\Katas.csprojResolveAssemblyReference.cache
+C:\code\sandbox\7sand\Sandbox\Sandbox\Katas\bin\Debug\Sandbox.dll
+C:\code\sandbox\7sand\Sandbox\Sandbox\Katas\bin\Debug\Sandbox.pdb
+C:\code\sandbox\7sand\Sandbox\Sandbox\Katas\bin\Debug\nunit.framework.dll
+C:\code\sandbox\7sand\Sandbox\Sandbox\Katas\bin\Debug\nunit.framework.xml
+C:\code\sandbox\7sand\Sandbox\Sandbox\Katas\obj\x86\Debug\Sandbox.dll
+C:\code\sandbox\7sand\Sandbox\Sandbox\Katas\obj\x86\Debug\Sandbox.pdb

@@ -1,6 +1,5 @@
 using System;
 using NUnit.Framework;
-using Katas.StringCalculatorKata;
 
 namespace Katas.StringCalculatorKata
 {
